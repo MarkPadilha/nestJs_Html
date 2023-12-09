@@ -16,7 +16,7 @@ import { PedidoPratoService } from './classes/pedido_prato/pedido_prato.service'
       host: 'localhost',
       port: 3306,
       username: 'root',
-      password: 'root',
+      password: '',
       database: 'restaurante',
       retryAttempts: 10,
       entities: [__dirname + '/**/*.entity{.ts,.js}'],

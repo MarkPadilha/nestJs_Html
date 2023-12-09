@@ -4,15 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     
+    
+
     <title>Página para fazer seu pedido!</title>
 </head>
 <body>
+
+    
+
     <header></header>
     <main>
         <section class="container">
             <h1 class="container_title">Faça seu pedido</h1>
-            <form action="http://localhost:3000/post" method="post" id="form" onsubmit="submitForm(event)" class="container_form">
+            <form  method="post" id="form"  class="container_form">
                 <label class="container_title" for="nome_completo">Informe seu nome completo: </label>
                 <input type="text" id="nome_completo" name="nome_completo">
                 <label class="container_title" for="mesa">Informe o número da sua mesa: </label>
@@ -26,8 +32,143 @@
             </form>
         </section>
 
+        <script> 
+           class Pedido{
+
+nome_cliente
+status_pedido
+em_atendimento
+prato
+numero_mesa
+preco_total
+
+
+constructor(nome_cliente, prato, numero_mesa){
+    this.nome_cliente = nome_cliente
+    this.status_pedido = status_pedido
+    this.em_atendimento = em_atendimento 
+    this.prato = prato
+    this.numero_mesa = numero_mesa
+    this.preco_total = Prato.getpreco()
+}
+
+get nome_cliente(){
+    return this.nome_cliente
+}
+
+set nome_cliente(nome_cliente){
+    this.nome_cliente = nome_cliente
+}
+
+get status_pedido(){
+    return this.status_pedido
+}
+
+set status_pedido(status_pedido){
+    this.status_pedido = status_pedido
+}
+
+get em_atendimento(){
+    return this.em_atendimento
+}
+
+set em_atendimento(em_atendimento){
+    this.em_atendimento = em_atendimento
+}
+
+get prato(){
+    return this.prato
+}
+
+set prato(prato){
+    this.prato = prato
+}
+
+get numero_mesa(){
+    return this.numero_mesa
+}
+
+set numero_mesa(numero_mesa){
+    this.numero_mesa = numero_mesa
+}
+} 
+
+class Prato extends Pedido{
+
+id
+nome
+preco
+
+
+constructor (nome, preco, id){
+    this.id = id
+    this.nome = nome
+    this.preco = preco
+    
+}
+
+get nome(){
+    return this.nome
+} 
+
+set nome(nome){
+    this.nome = nome
+}
+
+get preco(){
+    return this.preco
+}
+
+set preco(preco){
+    this.preco = preco
+}
+
+get id(){
+    return this.id
+}
+
+set id(id){
+    this.id = id
+}
+
+}
+
+            $("form").submit(function(event){
+
+                event.preventDefault()
+                const prato = new Prato();
+                var pedido = {
+        nome_completo: $("#nome_completo").val(),
+        mesa: $("#mesa").val(),
+        id_prato: $("#id_prato").val(),
+        status_pedido: false,
+        em_atendimento: false,
+        preco_total: prato.getPreco()
+    };
+
+    console.log(pedido);
+
+    $.ajax({
+        type: "POST",
+        url: "http://localhost:3000/post", 
+        data: pedido,
+        success: function(response) {
+            // Handle success
+            console.log(response);
+        },
+        error: function(error) {
+            // Handle error
+            console.error(error);
+        }
+    });
+                
+            })
+
+            
+        </script>
+
     </main>
     <footer></footer>
-    <script src="javascript/main.js"></script>
+    <script src="./javascript/main.js"></script>
 </body>
 </html>

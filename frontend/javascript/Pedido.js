@@ -1,4 +1,4 @@
-export class Pedido{
+ class Pedido{
 
     nome_cliente
     status_pedido
@@ -57,3 +57,5 @@ export class Pedido{
         this.numero_mesa = numero_mesa
     }
 }
+
+module.exports = Pedido

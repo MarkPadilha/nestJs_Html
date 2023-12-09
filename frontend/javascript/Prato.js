@@ -1,6 +1,6 @@
 import { Pedido } from "./Pedido"
 
-export class Prato extends Pedido{
+ class Prato extends Pedido{
 
     id
     nome
@@ -39,3 +39,5 @@ export class Prato extends Pedido{
     }
 
 }
+
+module.exports = Prato

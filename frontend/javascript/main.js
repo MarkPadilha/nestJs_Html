@@ -1,16 +1,24 @@
-import { Pedido } from "./Pedido";
-import { Prato } from "./Prato";
+//import { Pedido } from "./Pedido";
+// import { Prato } from "./Prato";
 
+//const Prato = require('./Prato')
 
 document.addEventListener('DOMContentLoaded', function() {
-    document.getElementById('form').addEventListener('submit', submitForm);
+    document.getElementById('form').addEventListener('submit', (event)=>{
+        event.preventDefault();
+        
+        const prato = new Prato()
+
+    });
 });
 
-
+/*
 function submitForm(event) {
+    
     event.preventDefault();
 
-url = 'http://localhost:3000/post';
+
+    url = 'http://localhost:3000/post';
     const nome = document.getElementById('nome_completo').value
     const mesa = document.getElementById('mesa').value
     const num_pedido = document.getElementById('id_prato').value
@@ -37,6 +45,8 @@ url = 'http://localhost:3000/post';
         preco_total: prato_cliente.getPreco()
       }   
 
+      console.log(pedido);
+
     fetch(url, {
         method: 'POST',
         headers: {
@@ -44,7 +54,7 @@ url = 'http://localhost:3000/post';
         },
         body: JSON.stringify(pedido),
     })
-    .then(response => response.json())
+    .then(response => alert(response))
     .then(pedido =>{
         console.log('Success', pedido);
     })
@@ -52,3 +62,4 @@ url = 'http://localhost:3000/post';
         console.error('error', pedido)
     })
 }
+*/

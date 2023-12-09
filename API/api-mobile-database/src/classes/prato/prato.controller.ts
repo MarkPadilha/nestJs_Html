@@ -1,4 +1,4 @@
-import { Controller, Get } from '@nestjs/common';
+import { Controller, Get, Post } from '@nestjs/common';
 import { PratoService } from './prato.service';
 import { PratoEntity } from './prato.entity';
 
@@ -9,5 +9,11 @@ export class PratoController {
   @Get('/listar')
   async listarPratos(): Promise<PratoEntity[]> {
     return this.pratoService.listarPratos();
+  }
+
+  @Post()
+  async cadastrarPrato(): Promise<PratoEntity>{
+    return 
+
   }
 }
